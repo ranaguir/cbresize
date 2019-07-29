@@ -44,7 +44,7 @@ def Tipo_Archivo (archivo):
 
 # procesar el .jpg
 def procesar_imagen (archivo):
-    (nombre,extension) = os.path.splitext(archivo)
+    (_,extension) = os.path.splitext(archivo)
     # solo los .jpg, ignora el resto de archivos
     if extension.lower() in ('.jpg', '.jpeg'):
         with Image(filename = archivo, resolution = 72) as img:
@@ -64,7 +64,7 @@ def procesar_imagen (archivo):
             img.save(filename = archivo)
 
 def procesar_archivo (archivo):
-    (nombre,extension) = os.path.splitext(archivo)
+    (nombre,_) = os.path.splitext(archivo)
     # lista para almacenar los archivos del comprimido
     lista_archivos = []
     # crea un directorio para descomprimir
@@ -123,7 +123,7 @@ def main():
             os.makedirs (dir_modificados)
         # recorre el directorio base en busqueda de los archivos de comics
         for archivo in os.listdir():
-            (nombre,extension) = os.path.splitext(archivo)
+            (_,extension) = os.path.splitext(archivo)
             if (extension in ('.cbz','.zip','.cbr','.rar')):
                 list_files.append(archivo)
 
