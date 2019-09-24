@@ -1,15 +1,22 @@
 import os
 import zipfile
 import rarfile
+import sys
 
 from send2trash import send2trash
 from wand.image import Image
 
-# Set to full path of unrar.exe if it is not in PATH
-rarfile.UNRAR_TOOL = "C:\\Program Files\\WinRAR\\UnRAR.exe"
-
 # definicion de variables globales
-base_dir = 'D:\\comics\\modificaciones'
+if sys.platform == 'win32':
+    # Set to full path of unrar.exe if it is not in PATH
+    rarfile.UNRAR_TOOL = "C:\\Program Files\\WinRAR\\UnRAR.exe"
+    # definicion del directorio base
+    base_dir = 'D:\\comics\\modificaciones'
+else:
+    # Set to full path of unrar.exe if it is not in PATH
+    rarfile.UNRAR_TOOL = '/usr/bin/unrar'
+    base_dir = '/media/randall/Datos/comics/modificaciones'
+
 dir_modificados = os.path.join(base_dir,'modificados')
 # el ancho de la pagina deseado
 ancho = 1280
